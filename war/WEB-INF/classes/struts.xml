@@ -1,0 +1,57 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="default" extends="struts-default">
+    	<action name="index" class="com.opensymphony.xwork2.ActionSupport">
+    		<result>/index.jsp</result>
+    	</action>
+        <action name="moon" class="com.opensymphony.xwork2.ActionSupport">
+            <result name="success">content/moon.jsp</result>
+        </action>
+        <action name="light" class="net.moonlightbox.action.LightAction">
+            <result name="success">content/light.jsp</result>
+            <result>/content/light.jsp</result>
+        </action>
+    </package>
+    <package name="priv" namespace="/priv" extends="struts-default">
+    	<action name="login" class="net.moonlightbox.action.priv.LoginAction">
+    		<result name="forward" type="redirect">${gotoURL}</result>
+    		<result name="success" type="redirect">/priv</result>
+    		<result name="input">/content/priv/login.jsp</result>
+    	</action>
+    	<action name="logout" class="net.moonlightbox.action.priv.LogoutAction">
+    		<result name="success" type="redirect">/priv</result>
+    	</action>
+    	<action name="SignUp" class="net.moonlightbox.action.priv.SignUpAction">
+    		<result name="success" type="redirect">/priv</result>
+    		<result name="input">/content/priv/SignUp.jsp</result>
+    	</action>
+    	<action name="AjaxTest" class="net.moonlightbox.action.priv.AjaxTestAction">
+    	    <result name="success" type="stream">
+    	        <param name="contentType">text/html</param>
+    	        <param name="inputName">inputStream</param>
+    	    </result>
+    	</action>
+    	<action name="*" class="net.moonlightbox.action.priv.{1}Action">
+    		<result name="forward" type="redirect">${gotoURL}</result>
+    		<result name="success">/content/priv/{1}.jsp</result>
+    		<result name="input">/content/priv/{1}.jsp</result>
+    	</action>
+    </package>
+    
+	<package name="jsonDefault" extends="json-default">
+		<global-results>
+			<result type="json" >
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+			</result>
+			<result type="json" name="success" />
+			<result type="json" name="input" />
+		</global-results>
+	</package>
+	<package name="jsonAjax" namespace="/ajax" extends="jsonDefault">
+	    <action name="*" class="net.moonlightbox.action.ajax.{1}Action"></action>
+	</package>
+	
+</struts>

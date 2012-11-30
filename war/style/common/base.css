@@ -1,0 +1,60 @@
+@CHARSET "UTF-8";
+body {
+	font-size: 11px;
+	margin: 0px;
+	padding: 0px;
+}
+div ul {
+	margin: 0px;
+	padding: 0px;
+}
+a {
+	text-decoration: none;
+}
+.FixedTopBar {
+	position: fixed;
+	display: block;
+	z-index: 333;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	margin: 0px;
+	width: 100%;
+	height: 30px;
+	background-color: gray;
+	vertical-align: middle;
+}
+#PrivFixedTopBar a {
+	color: white;
+	text-decoration: none;
+}
+
+.ContentHeader {
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	position: relative;
+	min-width: 500px;
+	padding-top: 10px;
+	font-family: "helvetica neue",arial,sans-serif;
+	color: #524d4d;
+	
+}
+
+.ContentLayOut {
+	position: relative;
+	width: 80%;
+	min-width: 500px;
+	margin: 0px auto 0px auto;
+	padding: 40px 0px 0px 0px;
+	border-width: medium;
+}
+
+.ContentItem {
+	width: 190px;
+	position: absolute;
+	background-color: #ffffff;
+	box-shadow: 0px 1px 3px rgba(34,25,25,0.4);
+	margin: 0px;
+	padding: 15px 15px 0px 15px;
+}
